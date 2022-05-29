@@ -7,8 +7,8 @@ module.exports = function() {
             type: String,
             required: true,
             index: {
-            unique: true
-        }
+                unique: true
+            }
         },
         nome: {
             type: String,
@@ -18,8 +18,7 @@ module.exports = function() {
             type: Date,
             default: Date.now
         }
-        
-        });
+    });
     schema.plugin(findOrCreate);
     return mongoose.model('Usuario', schema);
 };

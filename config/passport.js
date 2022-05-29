@@ -1,35 +1,36 @@
 var passport = require('passport');
-var GitHubStrategy = require('passport-github').Strategy;
+var GitHubStrategy = require('passport-github2').Strategy;
 var mongoose = require('mongoose');
 
 module.exports = function() {
     var Usuario = mongoose.model('Usuario');
 
     passport.use(new GitHubStrategy({
-            clientID: 'Iv1.0cdd936d327b9400',
-            clientSecret: '3af2b44b435b39e757a32f74de081884a8e64ee5',
-            callbackURL: 'http://localhost:3000/auth/github/callback '
-            }, function(accessToken, refreshToken, profile, done) {
-                Usuario.findOrCreate(
-                    { "login" : profile.username},
-                    { "nome" : profile.username},
-                    function(erro, usuario) {
-                        if(erro){
-                            console.log(erro);
-                            return done(erro);
-                        }
-                    return done(null, usuario);
-                    }
-                );
-                }));
-                
+        clientID: 'Iv1.958982a3c02292ca',
+        clientSecret: '53d8e22d2c806be9eb8d47b7b43f8c3ea7657369',
+        callbackURL: 'https://dswa5-11-ac-pt3009718.herokuapp.com/auth/github/callback'
+    }, function(accessToken, refreshToken, profile, done) {
+        Usuario.findOrCreate(
+            { "login" : profile.username},
+            { "nome" : profile.username},
+            function(erro, usuario) {
+            if(erro){
+                console.log(erro);
+                return done(erro);
+            }
+            return done(null, usuario);
+            }
+        );
+    }));
     passport.serializeUser(function(usuario, done) {
-            done(null, usuario._id);
-            });
-            passport.deserializeUser(function(id, done) {
-                Usuario.findById(id).exec()
-                .then(function(usuario) {
-                done(null, usuario);
-            });
+        done(null, usuario._id);
+    });
+    passport.deserializeUser(function(id, done) {
+        Usuario.findById(id).exec()
+        .then(function(usuario) {
+        done(null, usuario);
         });
-    };
+    });
+};
+
+
