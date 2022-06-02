@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 // import { MongoClient } from 'mongodb'
 
 // Connection URL
-const url = 'mongodb://dswa5:dswa5@cluster0-shard-00-00.tdusj.mongodb.net:27017,cluster0-shard-00-01.tdusj.mongodb.net:27017,cluster0-shard-00-02.tdusj.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-vmzxmt-shard-0&authSource=admin&retryWrites=true&w=majority';
+const url = 'mongodb+srv://Carolina:coutinho@cluster0.msaww.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient(url);
 
 // Database Name
