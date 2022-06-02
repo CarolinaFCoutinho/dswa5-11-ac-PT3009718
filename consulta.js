@@ -17,7 +17,7 @@ async function main() {
   const collection = db.collection('contatos');
 
   // the following code examples can be pasted here...
-  console.log("Aluno: Maria Eduarda Leal");
+  console.log("Aluno: Carolina de Faria Coutinho");
   const findResult = await collection.find({}).toArray();
   console.log('Found documents =>', findResult);
 
